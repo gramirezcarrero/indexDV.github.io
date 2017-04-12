@@ -4,11 +4,20 @@
         <meta charset="UTF-8"/>
         <title> index DB local Database</title>
         <script type='text/javascript'>
-            var indexedDB = window.indexedDB;
+            var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB ||window.msIndexedDB;
+            function startDB() {
+
+                 var dataBase = indexedDB.open("test",1);
+                 dataBase.onupgradeneeded = function (e) {
+                     console.log('hola')
+
+                 }
+
+            }
 
         </script>
     </head>
-    <body>
+    <body onload="startDB()">
         <!--
         @TODO
         -->
